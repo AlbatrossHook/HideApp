@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <uses-permission android:name="android.permission.QUERY_ALL_PACKAGES" />
+    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
+    <application 
+        android:label="HideApp"
+        android:icon="@drawable/ic_launcher">
+        <meta-data
+            android:name="albatross_plugin"
+            android:value="true" />
+
+        <meta-data
+            android:name="plugin_name"
+            android:value="HideApp" />
+
+        <meta-data
+            android:name="plugin_class"
+            android:value="qing.albatross.plugin.app.HideAppPlugin" />
+
+        <meta-data
+            android:name="plugin_description"
+            android:value="隐藏指定app，只对app生效。" />
+
+        <meta-data
+            android:name="plugin_author"
+            android:value="QingWan" />
+        <activity
+            android:name="qing.albatross.plugin.app.PluginConfigActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="qing.albatross.PluginConfig" />
+            </intent-filter>
+        </activity>
+
+    </application>
+</manifest>

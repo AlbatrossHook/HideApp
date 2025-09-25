@@ -1,0 +1,26 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    
+    <!-- 背景 -->
+    <path
+        android:fillColor="#BA1A1A"
+        android:pathData="M0,0h108v108h-108z" />
+    
+    <!-- 眼睛图标 -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M54,20c-12,0 -22,8 -30,16c8,8 18,16 30,16s22,-8 30,-16C76,28 66,20 54,20zM54,44c-5.5,0 -10,-4.5 -10,-10s4.5,-10 10,-10s10,4.5 10,10S59.5,44 54,44z" />
+    
+    <!-- 斜线表示隐藏 -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M20,20l68,68 -8,8 -68,-68 8,-8z" />
+    
+    <!-- Hide文字 -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M38,70h4v8h-4V70zM44,70h4v8h-4V70zM50,70h4v8h-4V70zM56,70h4v8h-4V70z" />
+</vector>
