@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <!-- 系统应用过滤选项 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingVertical="8dp"
+        android:gravity="center_vertical">
+
+        <CheckBox
+            android:id="@+id/checkBoxFilterSystemApps"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="显示系统应用" />
+    </LinearLayout>
+
+    <!-- 说明文字 -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="选择要隐藏的应用，这些应用对目标应用不可见"
+        android:textSize="14sp"
+        android:textColor="#666666"
+        android:paddingVertical="8dp" />
+
+    <!-- 应用列表 -->
+    <ListView
+        android:id="@+id/listViewApps"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <!-- 保存按钮 -->
+    <Button
+        android:id="@+id/buttonSave"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="保存配置"
+        android:layout_marginTop="16dp"
+        android:padding="12dp" />
+
+</LinearLayout>
