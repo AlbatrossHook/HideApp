@@ -17,6 +17,22 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="显示系统应用" />
+
+        <Button
+            android:id="@+id/buttonSelectAll"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="全选"
+            android:layout_marginStart="16dp"
+            android:padding="8dp" />
+
+        <Button
+            android:id="@+id/buttonDeselectAll"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="取消全选"
+            android:layout_marginStart="8dp"
+            android:padding="8dp" />
     </LinearLayout>
 
     <!-- 应用列表 -->

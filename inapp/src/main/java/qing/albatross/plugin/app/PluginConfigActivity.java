@@ -44,6 +44,8 @@ public class PluginConfigActivity extends Activity {
   private final List<AppInfo> appList = new ArrayList<>();
   private HideAppDbHelper dbHelper;
   private CheckBox checkBoxFilterSystemApps;
+  private Button buttonSelectAll;
+  private Button buttonDeselectAll;
   private boolean isShowSystemApps = false;
 
   // 应用信息类
@@ -86,6 +88,19 @@ public class PluginConfigActivity extends Activity {
       isShowSystemApps = isChecked;
       loadApps(); // 重新加载应用列表
     });
+
+    // 初始化全选和取消全选按钮
+    buttonSelectAll = findViewById(R.id.buttonSelectAll);
+    buttonDeselectAll = findViewById(R.id.buttonDeselectAll);
+
+    buttonSelectAll.setOnClickListener(v -> {
+      selectAllApps(true);
+    });
+
+    buttonDeselectAll.setOnClickListener(v -> {
+      selectAllApps(false);
+    });
+
     loadApps();
   }
 
@@ -132,6 +147,61 @@ public class PluginConfigActivity extends Activity {
         appInfo.isSelected = true;
       }
     }
+    updateSelectAllButtonState();
+  }
+
+  /**
+   * 全选或取消全选所有应用
+   * @param selectAll true为全选，false为取消全选
+   */
+  private void selectAllApps(boolean selectAll) {
+    for (AppInfo appInfo : appList) {
+      appInfo.isSelected = selectAll;
+    }
+    adapter.notifyDataSetChanged();
+    updateSelectAllButtonState();
+  }
+
+  /**
+   * 更新全选按钮的状态
+   */
+  private void updateSelectAllButtonState() {
+    if (appList.isEmpty()) {
+      buttonSelectAll.setEnabled(false);
+      buttonDeselectAll.setEnabled(false);
+      return;
+    }
+
+    buttonSelectAll.setEnabled(true);
+    buttonDeselectAll.setEnabled(true);
+
+    // 检查是否所有应用都已选中
+    boolean allSelected = true;
+    boolean anySelected = false;
+    for (AppInfo appInfo : appList) {
+      if (appInfo.isSelected) {
+        anySelected = true;
+      } else {
+        allSelected = false;
+      }
+    }
+
+    // 根据选择状态更新按钮文本
+    if (allSelected) {
+      buttonSelectAll.setText("已全选");
+      buttonSelectAll.setEnabled(false);
+    } else {
+      buttonSelectAll.setText("全选");
+      buttonSelectAll.setEnabled(true);
+    }
+
+    if (!anySelected) {
+      buttonDeselectAll.setText("已清空");
+      buttonDeselectAll.setEnabled(false);
+    } else {
+      buttonDeselectAll.setText("取消全选");
+      buttonDeselectAll.setEnabled(true);
+    }
   }
 
   private class AppAdapter extends BaseAdapter {
@@ -175,6 +245,7 @@ public class PluginConfigActivity extends Activity {
       }
       holder.checkBox.setOnCheckedChangeListener((buttonView, isChecked) -> {
         appInfo.isSelected = isChecked;
+        updateSelectAllButtonState(); // 更新按钮状态
       });
       holder.checkBox.setChecked(appInfo.isSelected);
       return convertView;
